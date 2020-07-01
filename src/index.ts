@@ -1,6 +1,6 @@
 import BN from 'bn.js'
 import * as RLP from 'rlp'
-import { toUtf8String, getAddress, Arrayish } from 'ethers/utils'
+import { toUtf8String, getAddress } from 'ethers/utils'
 import { solidityTypes, typeToSolidity } from './item-types'
 
 interface Column {
@@ -55,32 +55,32 @@ const padAddr = (rawAddr: string) => `${'0'.repeat(40 - rawAddr.length)}${rawAdd
 
 // TODO: Add over/underflow checks for numbers greater or smaller than
 // MAX_SIGNED_INTEGER and MIN_SINED_INTEGER and mark the item in the UI.
-export const gtcrDecode = ({ columns, values }: { columns: Column[], values: Buffer }) => {
-  const item = RLP.decode(values)
+export const gtcrDecode = ({ columns, values }: { columns: Column[], values: any }) => {
+  const item = RLP.decode(values) as any
   return columns.map((col, i) => {
     try {
       switch (typeToSolidity[col.type]) {
         case solidityTypes.STRING: {
           try {
-            return toUtf8String(item[i] as unknown as Arrayish)
+            return toUtf8String(item[i])
           } catch (err) {
-            // If the string was a hex value, toUtf8String fails.
+            // If the string was a hex value, the decoder fails.
             // return the raw hex.
             if (
               err.message ===
               'invalid utf8 byte sequence; unexpected continuation byte'
-            ) { return `0x${item[i].toString()}` } else throw err
+            ) { return `0x${item[i].toString('hex')}` } else throw err
           }
         }
         case solidityTypes.INT256:
           return new BN(item[i], 16).fromTwos(256).toString(10) // Two's complement
         case solidityTypes.ADDRESS: {
           // If addresses are small, we must left pad them with zeroes
-          const rawAddr = item[i].toString()
+          const rawAddr = item[i].toString('hex')
           return getAddress(`0x${padAddr(rawAddr)}`)
         }
         case solidityTypes.BOOL:
-          return Boolean(new BN(item[i].toString(), 16).toNumber())
+          return Boolean(new BN(item[i].toString('hex'), 16).toNumber())
         default:
           throw new Error(`Unhandled item type ${col.type}`)
       }
