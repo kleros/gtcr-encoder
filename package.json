@@ -1,6 +1,6 @@
 {
   "name": "gtcr-encoder",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Encode and decode GTCR items.",
   "main": "index.js",
   "author": "Kleros",
@@ -49,10 +49,14 @@
     "plugins": [
       "@typescript-eslint/eslint-plugin"
     ],
-    "env": [ "mocha" ]
+    "env": [
+      "mocha"
+    ]
   },
   "standard": {
-    "env": [ "mocha" ]
+    "env": [
+      "mocha"
+    ]
   },
   "commitlint": {
     "extends": [
