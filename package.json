@@ -1,6 +1,6 @@
 {
   "name": "@kleros/gtcr-encoder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Encode and decode GTCR items.",
   "main": "index.js",
   "author": "Kleros",
