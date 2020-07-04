@@ -4,6 +4,7 @@
   "description": "Encode and decode GTCR items.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "author": "Kleros",
   "license": "MIT",
   "private": false,
