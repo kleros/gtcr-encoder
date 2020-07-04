@@ -53,8 +53,6 @@ export const gtcrEncode = ({ columns, values }: { columns: Column[], [values: st
 
 const padAddr = (rawAddr: string) => `${'0'.repeat(40 - rawAddr.length)}${rawAddr}`
 
-// TODO: Add over/underflow checks for numbers greater or smaller than
-// MAX_SIGNED_INTEGER and MIN_SINED_INTEGER and mark the item in the UI.
 export const gtcrDecode = ({ columns, values }: { columns: Column[], values: any }) => {
   const item = RLP.decode(values) as any
   return columns.map((col, i) => {
