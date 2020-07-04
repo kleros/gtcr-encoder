@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/kleros/gtcr-encoder/compare/v1.0.4...v1.1.0) (2020-07-04)
+
+
+### Features
+
+* also export types and searchable fields ([1930c2f](https://github.com/kleros/gtcr-encoder/commit/1930c2f2124001796e216bd6902f60ecc23466ab))
+
 ### [1.0.4](https://github.com/kleros/gtcr-encoder/compare/v1.0.3...v1.0.4) (2020-07-04)
 
 
