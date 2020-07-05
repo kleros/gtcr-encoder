@@ -15,14 +15,14 @@ export default {
   GTCR_ADDRESS,
   IMAGE,
   FILE,
-  LINK
+  LINK,
 }
 
 export const solidityTypes = {
   ADDRESS: 'address',
   INT256: 'int256',
   STRING: 'string',
-  BOOL: 'bool'
+  BOOL: 'bool',
 }
 
 export const typeToSolidity: { [typeToSolidity: string]: any } = {
@@ -33,7 +33,7 @@ export const typeToSolidity: { [typeToSolidity: string]: any } = {
   [GTCR_ADDRESS]: solidityTypes.ADDRESS,
   [IMAGE]: solidityTypes.STRING, // We only store a link to the file onchain.
   [FILE]: solidityTypes.STRING, // We only store a link to the file onchain.
-  [LINK]: solidityTypes.STRING
+  [LINK]: solidityTypes.STRING,
 }
 
 export const typeDefaultValues = {
@@ -44,7 +44,7 @@ export const typeDefaultValues = {
   [GTCR_ADDRESS]: '',
   [IMAGE]: '',
   [FILE]: 'pdf doc mp3',
-  [LINK]: ''
+  [LINK]: '',
 }
 
 export const searchableFields = [ADDRESS, GTCR_ADDRESS, TEXT]

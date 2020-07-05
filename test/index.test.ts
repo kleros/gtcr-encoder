@@ -1,24 +1,34 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import { gtcrEncode, gtcrDecode, ItemTypes, MIN_SIGNED_INTEGER, MAX_SIGNED_INTEGER } from '../src/index'
+import {
+  gtcrEncode,
+  gtcrDecode,
+  ItemTypes,
+  MIN_SIGNED_INTEGER,
+  MAX_SIGNED_INTEGER,
+} from '../src/index'
 
 describe('Encoding and Decoding', () => {
   it('handling of list of lists properly', () => {
-    const columns = [{
-      label: 'Address',
-      type: 'GTCR address'
-    }]
+    const columns = [
+      {
+        label: 'Address',
+        type: 'GTCR address',
+      },
+    ]
     const inputValues = {
-      Address: '0x1E9c3b5f57974beAdbd8C28Ba918d85b8477C618'
+      Address: '0x1E9c3b5f57974beAdbd8C28Ba918d85b8477C618',
     }
 
     const encodedValues = gtcrEncode({ columns, values: inputValues })
-    expect(encodedValues).to.deep.equal('0xd5941e9c3b5f57974beadbd8c28ba918d85b8477c618')
+    expect(encodedValues).to.deep.equal(
+      '0xd5941e9c3b5f57974beadbd8c28ba918d85b8477c618',
+    )
 
     const decoded = gtcrDecode({ columns, values: encodedValues })
     expect(decoded).to.deep.equal([
-      '0x1E9c3b5f57974beAdbd8C28Ba918d85b8477C618'
+      '0x1E9c3b5f57974beAdbd8C28Ba918d85b8477C618',
     ])
   })
 
@@ -26,36 +36,36 @@ describe('Encoding and Decoding', () => {
     const columns = [
       {
         label: 'Title',
-        type: ItemTypes.TEXT
+        type: ItemTypes.TEXT,
       },
       {
         label: 'Subtitle',
-        type: ItemTypes.TEXT
+        type: ItemTypes.TEXT,
       },
       {
         label: 'Author',
-        type: ItemTypes.ADDRESS
+        type: ItemTypes.ADDRESS,
       },
       {
         label: 'ListAddr',
-        type: ItemTypes.GTCR_ADDRESS
+        type: ItemTypes.GTCR_ADDRESS,
       },
       {
         label: 'Link',
-        type: ItemTypes.LINK
+        type: ItemTypes.LINK,
       },
       {
         label: 'NegativeNumber',
-        type: ItemTypes.NUMBER
+        type: ItemTypes.NUMBER,
       },
       {
         label: 'PositiveNumber',
-        type: ItemTypes.NUMBER
+        type: ItemTypes.NUMBER,
       },
       {
         label: 'Boolean',
-        type: ItemTypes.BOOLEAN
-      }
+        type: ItemTypes.BOOLEAN,
+      },
     ]
 
     const inputValues = {
@@ -66,7 +76,7 @@ describe('Encoding and Decoding', () => {
       Link: 'https://example.com',
       NegativeNumber: MAX_SIGNED_INTEGER,
       PositiveNumber: MIN_SIGNED_INTEGER,
-      Boolean: true
+      Boolean: true,
     }
 
     const encodedValues = gtcrEncode({ columns, values: inputValues })
@@ -79,7 +89,7 @@ describe('Encoding and Decoding', () => {
       inputValues.Link,
       inputValues.NegativeNumber,
       inputValues.PositiveNumber,
-      inputValues.Boolean
+      inputValues.Boolean,
     ])
   })
 
@@ -89,31 +99,38 @@ describe('Encoding and Decoding', () => {
     const columns = [
       {
         label: 'Thumbnail',
-        type: 'image'
+        type: 'image',
       },
       {
         label: 'Title',
-        type: 'text'
+        type: 'text',
       },
       {
         label: 'Link',
-        type: 'text'
+        type: 'text',
       },
       {
         label: 'Author',
-        type: 'text'
-      }
+        type: 'text',
+      },
     ]
 
     const inputValues = {
-      Thumbnail: '/ipfs/QmbfE4m4esbQ8gSYi83ptpRZggENaHhCWYTr6796Y1iRrk/high-impact-logo-.png',
+      Thumbnail:
+        '/ipfs/QmbfE4m4esbQ8gSYi83ptpRZggENaHhCWYTr6796Y1iRrk/high-impact-logo-.png',
       Title: 'some title',
-      Link: 'http://localhost:3000/tcr/0x691C328745E4E090c80f4534f646684b418D1F6F',
-      Author: '0xdeadbeef'
+      Link:
+        'http://localhost:3000/tcr/0x691C328745E4E090c80f4534f646684b418D1F6F',
+      Author: '0xdeadbeef',
     }
 
     const encodedValues = gtcrEncode({ columns, values: inputValues })
     const decoded = gtcrDecode({ columns, values: encodedValues })
-    expect(decoded).to.deep.equal([inputValues.Thumbnail, inputValues.Title, inputValues.Link, inputValues.Author])
+    expect(decoded).to.deep.equal([
+      inputValues.Thumbnail,
+      inputValues.Title,
+      inputValues.Link,
+      inputValues.Author,
+    ])
   })
 })
