@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
 
 import { expect } from 'chai'
-import { gtcrEncode, gtcrDecode } from '../src/index'
+import { gtcrEncode, gtcrDecode, ItemTypes, MIN_SIGNED_INTEGER, MAX_SIGNED_INTEGER } from '../src/index'
 
-describe('decode', () => {
+describe('Encoding and Decoding', () => {
   it('handling of list of lists properly', () => {
     const columns = [{
       label: 'Address',
@@ -26,37 +26,61 @@ describe('decode', () => {
     const columns = [
       {
         label: 'Title',
-        type: 'text'
+        type: ItemTypes.TEXT
+      },
+      {
+        label: 'Subtitle',
+        type: ItemTypes.TEXT
       },
       {
         label: 'Author',
-        type: 'text'
+        type: ItemTypes.ADDRESS
+      },
+      {
+        label: 'ListAddr',
+        type: ItemTypes.GTCR_ADDRESS
       },
       {
         label: 'Link',
-        type: 'link'
+        type: ItemTypes.LINK
+      },
+      {
+        label: 'NegativeNumber',
+        type: ItemTypes.NUMBER
+      },
+      {
+        label: 'PositiveNumber',
+        type: ItemTypes.NUMBER
+      },
+      {
+        label: 'Boolean',
+        type: ItemTypes.BOOLEAN
       }
     ]
 
     const inputValues = {
-      Title: 'Обзор платформы Kleros – справедливое решение споров',
-      Author: 'pushkaroman',
-      Link: 'https://steemit.com/blockchain/@pushkaroman/obzor-platformy-kleros-spravedlivoe-reshenie-sporov'
+      Title: 'some title',
+      Subtitle: '0xdeadbeef', // Checking that strings that look like hex work properly.
+      Author: '0x79d0Ffb6109B45D539cC3E291088C11D34ffFFF9',
+      ListAddr: '0x79d0Ffb6109B45D539cC3E291088C11D34ffFFF9',
+      Link: 'https://example.com',
+      NegativeNumber: MAX_SIGNED_INTEGER,
+      PositiveNumber: MIN_SIGNED_INTEGER,
+      Boolean: true
     }
 
     const encodedValues = gtcrEncode({ columns, values: inputValues })
-    const expectedEncodedValues = '0xf8ccb85dd09ed0b1d0b7d0bed18020d0bfd0bbd0b0d182d184d0bed180d0bcd18b204b6c65726f7320e2809320d181d0bfd180d0b0d0b2d0b5d0b4d0bbd0b8d0b2d0bed0b520d180d0b5d188d0b5d0bdd0b8d0b520d181d0bfd0bed180d0bed0b28b707573686b61726f6d616eb85f68747470733a2f2f737465656d69742e636f6d2f626c6f636b636861696e2f40707573686b61726f6d616e2f6f627a6f722d706c6174666f726d792d6b6c65726f732d737072617665646c69766f652d72657368656e69652d73706f726f76'
-
-    expect(encodedValues).to.deep.equal(expectedEncodedValues)
-
-    const expected = [
-      'Обзор платформы Kleros – справедливое решение споров',
-      'pushkaroman',
-      'https://steemit.com/blockchain/@pushkaroman/obzor-platformy-kleros-spravedlivoe-reshenie-sporov'
-    ]
-
     const decoded = gtcrDecode({ columns, values: encodedValues })
-    expect(decoded).to.deep.equal(expected)
+    expect(decoded).to.deep.equal([
+      inputValues.Title,
+      inputValues.Subtitle,
+      inputValues.Author,
+      inputValues.ListAddr,
+      inputValues.Link,
+      inputValues.NegativeNumber,
+      inputValues.PositiveNumber,
+      inputValues.Boolean
+    ])
   })
 
   it('handle decoding image column types', () => {
@@ -83,24 +107,13 @@ describe('decode', () => {
 
     const inputValues = {
       Thumbnail: '/ipfs/QmbfE4m4esbQ8gSYi83ptpRZggENaHhCWYTr6796Y1iRrk/high-impact-logo-.png',
-      Title: 'asd',
+      Title: 'some title',
       Link: 'http://localhost:3000/tcr/0x691C328745E4E090c80f4534f646684b418D1F6F',
       Author: '0xdeadbeef'
     }
 
     const encodedValues = gtcrEncode({ columns, values: inputValues })
-    const expectedEncodedValues = '0xf89bb84a2f697066732f516d626645346d346573625138675359693833707470525a6767454e61486843575954723637393659316952726b2f686967682d696d706163742d6c6f676f2d2e706e6783617364b844687474703a2f2f6c6f63616c686f73743a333030302f7463722f30783639314333323837343545344530393063383066343533346636343636383462343138443146364684deadbeef'
-
-    expect(encodedValues).to.deep.equal(expectedEncodedValues)
-
-    const expected = [
-      '/ipfs/QmbfE4m4esbQ8gSYi83ptpRZggENaHhCWYTr6796Y1iRrk/high-impact-logo-.png',
-      'asd',
-      'http://localhost:3000/tcr/0x691C328745E4E090c80f4534f646684b418D1F6F',
-      '0xdeadbeef'
-    ]
-
     const decoded = gtcrDecode({ columns, values: encodedValues })
-    expect(decoded).to.deep.equal(expected)
+    expect(decoded).to.deep.equal([inputValues.Thumbnail, inputValues.Title, inputValues.Link, inputValues.Author])
   })
 })
