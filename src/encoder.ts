@@ -1,12 +1,7 @@
 import BN from 'bn.js'
 import * as RLP from 'rlp'
-import { ethers } from 'ethers'
+import { toUtf8Bytes, toUtf8String, getAddress } from 'ethers/lib/utils'
 import { solidityTypes, typeToSolidity } from './item-types'
-import { toUtf8Bytes } from 'ethers/lib/utils'
-
-const {
-  utils: { toUtf8String, getAddress },
-} = ethers
 
 interface Column {
   type: string
