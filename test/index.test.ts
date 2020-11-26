@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 
+import BN from 'bn.js'
 import { expect } from 'chai'
 import {
   gtcrEncode,
@@ -66,6 +67,10 @@ describe('Encoding and Decoding', () => {
         label: 'Boolean',
         type: ItemTypes.BOOLEAN,
       },
+      {
+        label: 'Twitter User Profile',
+        type: ItemTypes.TWITTER_USER_ID,
+      },
     ]
 
     const inputValues = {
@@ -77,6 +82,7 @@ describe('Encoding and Decoding', () => {
       NegativeNumber: MAX_SIGNED_INTEGER,
       PositiveNumber: MIN_SIGNED_INTEGER,
       Boolean: true,
+      'Twitter User Profile': new BN(65516516161),
     }
 
     const encodedValues = gtcrEncode({ columns, values: inputValues })
@@ -90,6 +96,7 @@ describe('Encoding and Decoding', () => {
       inputValues.NegativeNumber,
       inputValues.PositiveNumber,
       inputValues.Boolean,
+      inputValues['Twitter User Profile'],
     ])
   })
 
