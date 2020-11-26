@@ -6,6 +6,7 @@ const GTCR_ADDRESS = 'GTCR address'
 const IMAGE = 'image'
 const FILE = 'file'
 const LINK = 'link'
+const TWITTER_USER_ID = 'Twitter User'
 
 export default {
   ADDRESS,
@@ -16,6 +17,7 @@ export default {
   IMAGE,
   FILE,
   LINK,
+  TWITTER_USER_ID,
 }
 
 export const solidityTypes = {
@@ -34,6 +36,7 @@ export const typeToSolidity: { [typeToSolidity: string]: any } = {
   [IMAGE]: solidityTypes.STRING, // We only store a link to the file onchain.
   [FILE]: solidityTypes.STRING, // We only store a link to the file onchain.
   [LINK]: solidityTypes.STRING,
+  [TWITTER_USER_ID]: solidityTypes.INT256,
 }
 
 export const typeDefaultValues = {
@@ -45,6 +48,7 @@ export const typeDefaultValues = {
   [IMAGE]: '',
   [FILE]: 'pdf doc mp3',
   [LINK]: '',
+  [TWITTER_USER_ID]: 0,
 }
 
-export const searchableFields = [ADDRESS, GTCR_ADDRESS, TEXT]
+export const searchableFields = [ADDRESS, GTCR_ADDRESS, TEXT, TWITTER_USER_ID]
