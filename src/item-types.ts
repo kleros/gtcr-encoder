@@ -51,4 +51,4 @@ export const typeDefaultValues = {
   [TWITTER_USER_ID]: 0,
 }
 
-export const searchableFields = [ADDRESS, GTCR_ADDRESS, TEXT, TWITTER_USER_ID]
+export const searchableFields = [ADDRESS, GTCR_ADDRESS, TEXT]
