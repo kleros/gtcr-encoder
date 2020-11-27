@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/kleros/gtcr-encoder/compare/v1.1.3...v1.3.0) (2020-11-27)
+
+
+### Features
+
+* support twitter profile column types ([229a68a](https://github.com/kleros/gtcr-encoder/commit/229a68af8dc059d51f4cca363ab9a586403f5584))
+
+
+### Bug Fixes
+
+* prevent searchable twitter user ([bf8d84a](https://github.com/kleros/gtcr-encoder/commit/bf8d84a90a83453ddddba8f00b5b0a342d80d40b))
+
 ### [1.1.3](https://github.com/kleros/gtcr-encoder/compare/v1.1.2...v1.1.3) (2020-07-05)
 
 
