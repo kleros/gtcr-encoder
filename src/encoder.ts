@@ -77,7 +77,7 @@ export const gtcrDecode = ({
           return toUtf8String(item[i])
         }
         case solidityTypes.INT256:
-          return new BN(item[i], 16).fromTwos(256) // Two's complement
+          return String(new BN(item[i], 16).fromTwos(256)) // Two's complement
         case solidityTypes.ADDRESS: {
           // If addresses are small, we must left pad them with zeroes
           const rawAddr = item[i].toString('hex')
