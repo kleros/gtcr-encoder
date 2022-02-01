@@ -46,7 +46,7 @@ export const typeDefaultValues = {
   [NUMBER]: 0,
   [GTCR_ADDRESS]: '',
   [IMAGE]: '',
-  [FILE]: 'pdf doc mp3',
+  [FILE]: '',
   [LINK]: '',
   [TWITTER_USER_ID]: 0,
 }
