@@ -71,6 +71,10 @@ describe('Encoding and Decoding', () => {
         label: 'Twitter User Profile',
         type: ItemTypes.TWITTER_USER_ID,
       },
+      {
+        label: 'Description',
+        type: ItemTypes.LONG_TEXT,
+      },
     ]
 
     const inputValues = {
@@ -79,10 +83,12 @@ describe('Encoding and Decoding', () => {
       Author: '0x79d0Ffb6109B45D539cC3E291088C11D34ffFFF9',
       ListAddr: '0x79d0Ffb6109B45D539cC3E291088C11D34ffFFF9',
       Link: 'https://example.com',
-      NegativeNumber: MAX_SIGNED_INTEGER,
-      PositiveNumber: MIN_SIGNED_INTEGER,
+      NegativeNumber: MAX_SIGNED_INTEGER.toString(),
+      PositiveNumber: MIN_SIGNED_INTEGER.toString(),
       Boolean: true,
-      'Twitter User Profile': new BN(65516516161),
+      'Twitter User Profile': new BN(65516516161).toString(),
+      Description:
+        'Repudiandae rerum nobis ut velit quia repellendus. Laudantium reiciendis qui voluptate. Sit officiis molestiae omnis rerum fugiat natus. Sunt totam magnam laboriosam. Et error et',
     }
 
     const encodedValues = gtcrEncode({ columns, values: inputValues })
@@ -97,6 +103,7 @@ describe('Encoding and Decoding', () => {
       inputValues.PositiveNumber,
       inputValues.Boolean,
       inputValues['Twitter User Profile'],
+      inputValues.Description,
     ])
   })
 
