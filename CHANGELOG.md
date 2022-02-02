@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/kleros/gtcr-encoder/compare/v1.4.1...v1.5.0) (2022-02-02)
+
+
+### Features
+
+* add support for long text fields ([3b7062d](https://github.com/kleros/gtcr-encoder/commit/3b7062d99445b7ded6813ae9ec5ada52726e98ce))
+
 ### [1.4.1](https://github.com/kleros/gtcr-encoder/compare/v1.4.0...v1.4.1) (2022-02-01)
 
 
