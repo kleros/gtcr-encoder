@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/kleros/gtcr-encoder/compare/v1.5.0...v1.6.0) (2022-03-07)
+
+
+### Features
+
+* add support for rich address fields ([d594c98](https://github.com/kleros/gtcr-encoder/commit/d594c98c5a1f07ee507d4bdf4515c2bd15ff8c07))
+
 ## [1.5.0](https://github.com/kleros/gtcr-encoder/compare/v1.4.1...v1.5.0) (2022-02-02)
 
 
