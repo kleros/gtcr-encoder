@@ -1,4 +1,5 @@
 const ADDRESS = 'address'
+const RICH_ADDRESS = 'rich address'
 const NUMBER = 'number'
 const TEXT = 'text'
 const BOOLEAN = 'boolean'
@@ -11,6 +12,7 @@ const LONG_TEXT = 'long text'
 
 export default {
   ADDRESS,
+  RICH_ADDRESS,
   NUMBER,
   TEXT,
   BOOLEAN,
@@ -31,6 +33,7 @@ export const solidityTypes = {
 
 export const typeToSolidity: { [typeToSolidity: string]: any } = {
   [ADDRESS]: solidityTypes.ADDRESS,
+  [RICH_ADDRESS]: solidityTypes.STRING,
   [NUMBER]: solidityTypes.INT256,
   [TEXT]: solidityTypes.STRING,
   [BOOLEAN]: solidityTypes.BOOL,
@@ -44,6 +47,7 @@ export const typeToSolidity: { [typeToSolidity: string]: any } = {
 
 export const typeDefaultValues = {
   [ADDRESS]: '',
+  [RICH_ADDRESS]: '',
   [TEXT]: '',
   [BOOLEAN]: false,
   [NUMBER]: 0,

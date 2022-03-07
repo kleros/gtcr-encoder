@@ -52,6 +52,10 @@ describe('Encoding and Decoding', () => {
         type: ItemTypes.GTCR_ADDRESS,
       },
       {
+        label: 'RichAddr',
+        type: ItemTypes.RICH_ADDRESS,
+      },
+      {
         label: 'Link',
         type: ItemTypes.LINK,
       },
@@ -82,6 +86,7 @@ describe('Encoding and Decoding', () => {
       Subtitle: '0xdeadbeef', // Checking that strings that look like hex work properly.
       Author: '0x79d0Ffb6109B45D539cC3E291088C11D34ffFFF9',
       ListAddr: '0x79d0Ffb6109B45D539cC3E291088C11D34ffFFF9',
+      RichAddr: 'eth:0x79d0Ffb6109B45D539cC3E291088C11D34ffFFF9',
       Link: 'https://example.com',
       NegativeNumber: MAX_SIGNED_INTEGER.toString(),
       PositiveNumber: MIN_SIGNED_INTEGER.toString(),
@@ -98,6 +103,7 @@ describe('Encoding and Decoding', () => {
       inputValues.Subtitle,
       inputValues.Author,
       inputValues.ListAddr,
+      inputValues.RichAddr,
       inputValues.Link,
       inputValues.NegativeNumber,
       inputValues.PositiveNumber,
