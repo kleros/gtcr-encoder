@@ -31,7 +31,7 @@ export const solidityTypes = {
   BOOL: 'bool',
 }
 
-export const typeToSolidity: { [typeToSolidity: string]: any } = {
+export const typeToSolidity: { [typeToSolidity: string]: string } = {
   [ADDRESS]: solidityTypes.ADDRESS,
   [RICH_ADDRESS]: solidityTypes.STRING,
   [NUMBER]: solidityTypes.INT256,
